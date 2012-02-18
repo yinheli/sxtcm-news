@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				webView.loadUrl(HOME_URL);
+				loadHomePage();
 			}
 		});
 		
@@ -168,15 +168,8 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		SharedPreferences sharedPreferences = getPreferences(MODE_WORLD_READABLE);
-		String sHome = sharedPreferences.getString("home", null);
-		long sExp = sharedPreferences.getLong("exp", -1L);
-		if (sHome != null && sExp > new Date().getTime()) {
-			Log.d(Constants.TAG, "历史首页地址：" + sHome);
-			webView.loadUrl(sHome);
-		} else {
-			webView.loadUrl(HOME_URL);
-		}
+		loadHomePage();
+		
 	}
 	
 	@Override
@@ -236,6 +229,18 @@ public class MainActivity extends Activity {
 			});
 			builder.setNegativeButton(R.string.cancel, null);
 			builder.create().show();
+		}
+	}
+	
+	private void loadHomePage() {
+		SharedPreferences sharedPreferences = getPreferences(MODE_WORLD_READABLE);
+		String sHome = sharedPreferences.getString("home", null);
+		long sExp = sharedPreferences.getLong("exp", -1L);
+		if (sHome != null && sExp > new Date().getTime()) {
+			Log.d(Constants.TAG, "历史首页地址：" + sHome);
+			webView.loadUrl(sHome);
+		} else {
+			webView.loadUrl(HOME_URL);
 		}
 	}
 	
