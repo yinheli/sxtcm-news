@@ -1,10 +1,9 @@
 package com.yinheli.sxtcm.activity;
 
-import com.yinheli.sxtcm.R;
-import com.yinheli.sxtcm.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.yinheli.sxtcm.R;
 
 /**
  * Launcher Activity
@@ -13,7 +12,6 @@ import android.os.Bundle;
  *
  */
 public class LauncherActivity extends Activity {
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
