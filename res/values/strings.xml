@@ -10,6 +10,7 @@
     <string name="exit">退出</string>
     <string name="loading_message">加载中请稍后……</string>
     <string name="off_line_tip">您现在处于离线状态，可能无法访问</string>
+    <string name="off_line_refresh_tip">离线状态，刷新无法使用！</string>
     <string name="exit_title">退出</string>
     <string name="cancel">取消</string>
     <string name="exit_message">确实要退出山西中医学院手机新闻吗？</string>

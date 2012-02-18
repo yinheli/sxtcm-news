@@ -184,8 +184,12 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		switch (id) {
 			case R.id.menu_refresh:
-				webView.clearCache(true);
-				webView.reload();
+				if (ActivityUtil.isNewworkAvailable(this)) {
+					webView.clearCache(true);
+					webView.reload();
+				} else {
+					Toast.makeText(this, R.string.off_line_refresh_tip, Toast.LENGTH_SHORT).show();
+				}
 				break;
 			case R.id.menu_share:
 				Intent i = new Intent(Intent.ACTION_SEND);
