@@ -20,7 +20,7 @@ public interface Constants {
 	 * 程序内部版本序号，值越大表示版本越高
 	 * 常用于比对版本号
 	 */
-	int VER_ID = 0;
+	int VER_ID = 1;
 
 	/**
 	 * 最新的app下载地址
