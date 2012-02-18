@@ -1,11 +1,16 @@
 package com.yinheli.sxtcm.activity;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yinheli.sxtcm.Constants;
 import com.yinheli.sxtcm.R;
 import com.yinheli.sxtcm.utils.ActivityUtil;
 
@@ -91,11 +97,10 @@ public class MainActivity extends Activity {
 		
 		if (ActivityUtil.isNewworkAvailable(this)) {
 			webView.clearCache(true);
-			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		} else {
 			Toast.makeText(this, R.string.off_line_tip, Toast.LENGTH_LONG).show();
-			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
 		}
+		webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		
 		webView.setWebChromeClient(new WebChromeClient() {
 			@Override
@@ -105,6 +110,8 @@ public class MainActivity extends Activity {
 		});
 		
 		webView.setWebViewClient(new WebViewClient() {
+			
+			private boolean homeSaved;
 			
 			@Override
 			public void onPageFinished(WebView view, String url) {
@@ -124,6 +131,15 @@ public class MainActivity extends Activity {
 					forward.setEnabled(true);
 				} else {
 					forward.setEnabled(false);
+				}
+				
+				if (!homeSaved && url != null) {
+					homeSaved = true;
+					Editor e = getPreferences(MODE_WORLD_WRITEABLE).edit();
+					e.putString("home", url);
+					e.putLong("exp", new Date().getTime() + 3600 * 10 * 1000);
+					e.commit();
+					Log.d(Constants.TAG, "保存首页地址：" + url);
 				}
 			}
 			
@@ -152,7 +168,15 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		webView.loadUrl(HOME_URL);
+		SharedPreferences sharedPreferences = getPreferences(MODE_WORLD_READABLE);
+		String sHome = sharedPreferences.getString("home", null);
+		long sExp = sharedPreferences.getLong("exp", -1L);
+		if (sHome != null && sExp > new Date().getTime()) {
+			Log.d(Constants.TAG, "历史首页地址：" + sHome);
+			webView.loadUrl(sHome);
+		} else {
+			webView.loadUrl(HOME_URL);
+		}
 	}
 	
 	@Override
