@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="yhl_theme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="action_bar_btn">
+        <item name="android:width">38.5dip</item>
+        <item name="android:height">41.3dip</item>
+    </style>
+
+</resources>
