@@ -100,10 +100,11 @@ public class MainActivity extends Activity {
 		
 		if (ActivityUtil.isNewworkAvailable(this)) {
 			webView.clearCache(true);
+			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		} else {
+			webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
 			Toast.makeText(this, R.string.off_line_tip, Toast.LENGTH_LONG).show();
 		}
-		webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		
 		webView.setWebChromeClient(new WebChromeClient() {
 			@Override

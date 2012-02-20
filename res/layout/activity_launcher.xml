@@ -12,7 +12,7 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="300dip"
             android:layout_height="wrap_content"
             android:src="@drawable/start" />
 
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="150dip"
+            android:layout_marginTop="15dip"
             android:text="@string/ver"
             android:textColor="#777777"
             android:textSize="12dip" />
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="6dip"
+        android:layout_marginBottom="15dip"
         android:text="@string/copyright"
         android:textColor="#888888"
         android:textSize="10dip" />
