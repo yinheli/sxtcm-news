@@ -12,7 +12,7 @@ public interface Constants {
 	 * 版本号
 	 * 公布给用户查看的版本名称
 	 */
-	String VER = "1.0 beta";
+	String VER = "1.0";
 
 	/**
 	 * 版本id
@@ -20,7 +20,7 @@ public interface Constants {
 	 * 程序内部版本序号，值越大表示版本越高
 	 * 常用于比对版本号
 	 */
-	int VER_ID = 1;
+	int VER_ID = 2;
 
 	/**
 	 * 最新的app下载地址
