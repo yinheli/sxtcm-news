@@ -93,6 +93,9 @@ public class MainActivity extends Activity {
 		
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setDatabaseEnabled(true);
+		webView.getSettings().setSavePassword(false);
+		webView.getSettings().setSaveFormData(false);
+		webView.getSettings().setLightTouchEnabled(true);
 		webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 		
 		if (ActivityUtil.isNewworkAvailable(this)) {

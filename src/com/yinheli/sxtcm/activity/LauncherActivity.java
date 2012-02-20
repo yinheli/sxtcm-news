@@ -188,7 +188,7 @@ public class LauncherActivity extends Activity {
 					builder.create().show();
 				}
 			}
-		}, 500);
+		}, 2000);
 	}
 	
 	private boolean needupdate() {
